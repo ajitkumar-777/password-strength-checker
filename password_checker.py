@@ -5,6 +5,9 @@ import string
 
 def check_password_strength(password):
     """Return a strength rating and suggestions for a password."""
+    if not password.strip():
+        return "Invalid", ["Password cannot be empty."]
+    
     score = 0
     suggestions = []
 
