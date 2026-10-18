@@ -1,7 +1,7 @@
 
 import getpass
 import string
-
+from common_weak_passwords import COMMON_WEAK_PASSWORDS
 
 def check_password_strength(password):
     """Return a strength rating and suggestions for a password."""
@@ -35,6 +35,10 @@ def check_password_strength(password):
         score += 1
     else:
         suggestions.append("Add a special character.")
+    
+    if password.lower() in COMMON_WEAK_PASSWORDS:
+        score = 0
+        suggestions.append("This password is commonly used and may be easy to guess.")
 
     if score <= 2:
         strength = "Weak"
